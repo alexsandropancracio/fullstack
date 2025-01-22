@@ -62,7 +62,7 @@ subtrair(5,1)//O JS realiza o typecast(se é str ou number) automático.
 
 console.log(subtrair(10, 5))
 
-//De forma mais didática, podemos colocar a função dentro de uma varível e imprimir a função através dessa variável:
+//De forma mais didática, podemos colocar a função dentro de uma varível e imprimir a função através dessa variável ou imprimir a dentro de um console.log() conforme acima e abaixo:
 
 let sub = subtrair(10-10)
 console.log(sub)
@@ -124,9 +124,9 @@ const arrow = (valor1, valor2)=>{ return valor1 + valor2}//É uma forma de leitu
 
 console.log(arrow(10,5))
 
-const nome = x => {return x}
+const meuNome = x => {return x}
 
-console.log(nome("Alex"))
+console.log(meuNome("Alex"))
 
 const adicionar = y => y + 10//Não preciso do return pra usar o valor da função
 
@@ -138,11 +138,11 @@ const funAnin = (...totais) => {
     const somar = val => {
         let res = 0
         for(x of val){
-            res += v
+            res += x
             return res
         }
     }
-    return somar(valores)//A função funAnin retorna o retorno da função somar e isso é obrigatório retornar o retorno de outra função.
+    return somar(totais)//A função funAnin retorna o retorno da função somar e isso é obrigatório retornar o retorno de outra função.
 }
 
 const funfun = (...retornandoFunctionAninhado)=>{
@@ -150,3 +150,107 @@ const funfun = (...retornandoFunctionAninhado)=>{
 }
 
 console.log(funAnin(10,5,15))
+
+//Funções Geradoras
+
+//Uma função geradora tem o seu retorno adiado até o momento que precisamos desse retorno e elas são o pilar da programação assincrona dentro de JS.
+
+function* cores(){//Pra criar uma função geradora usamos um asterístico
+    yield 'Amarelho'
+    yield 'Verde'
+    yield 'Azul'
+}
+
+const iterator = cores()
+
+console.log(iterator.next().value)
+console.log(iterator.next().value)
+console.log(iterator.next().value)//Se eu executar novamente, a função tem noção de onde parou e então vai para o próximo yield.
+
+function* perguntas(){
+    const nome = yield 'Qual o seu nome?'
+    const hobbie = yield 'Qual o seu hobbie favorito?'//podemos colocar o yield dentro de uma variável também
+    return 'seu nome é ' + nome + ' e seu esporte hobbie é ' + hobbie
+}
+
+const itp = perguntas()
+console.log(itp.next().value)
+console.log(itp.next('Alex').value)
+console.log(itp.next('Dança').value)
+
+function* contador(){
+    let z = 0
+    while(true){
+        yield z++
+    }
+}
+
+const itc = contador()
+/*console.log(itc.next().value)
+console.log(itc.next().value)
+console.log(itc.next().value)//Quantas vezes eu chamar a função, é quantas vezes eu vou chamar o loop infinito.
+*/
+
+for(let x = 0; x < 10; x++){
+    console.log(itc.next().value)
+}
+
+//Função MAP
+
+//A função MAP tem funcionalidade de percorrer Arrays, percorrer coleções ou "iterar", diferente dos loops e quando eu precisar alterar por completo todos os elementos da coleção.
+
+//O MAP também pode receber 3 parâmetros, o elemento, a posição e o próprio Array que ele vai iterar.
+
+// let mapeamento = cursos.map((el,i)=>{ pra comentar tudo selecionado é ctrl + ponto e vírgula
+//     return el
+//     //console.log("Curso: " + el + " - Posição do curso: " + i)
+// })
+
+// let cursos = document.getElementsByTagName('div')
+// cursos = [...cursos]//É necessário espalhar o elemento para que a função map possa ser usada.
+
+// cursos.map((e,i)=>{
+//     e.innerHTML = "Aprendendo Programação JS"
+//     console.log(e.innerHTML)//assim eu trago os elementos HTML.
+// })
+
+//const val = Array.prototype.map.call(cursos,({innerHTML})=>innerHTML) //pra pegar a propriedade do elemento eu uso chaves.
+
+//console.log(val)
+
+const converterInt = (elemento) => parseInt(elemento)
+
+let numero =['1','2','3','4','5'].map(converterInt)
+
+console.log(numero)
+
+//Operadro THIS em Funções
+
+function aluno(nome,nota){
+    this.nome = nome//pra que a distinção da variavel com o mesmo nome do parâmetro é necessário usar o operador THIS, que é como se fosse uma variável para a função aluno.
+    this.nota = nota
+
+    this.dados = function(){
+        setTimeout(function(){
+            //O THIS faz referencia a uma nova instância criada para o setTimeout, se usarmos a function normal, não funciona, mas para resolver esse problema, usamos o arrow function.
+            console.log(this.nome)
+            console.log(this.nota)
+        },2000)
+    }
+
+    this.dados_arrow = function(){
+        setTimeout(()=>{//Conseguimos obter o resultado porque o arrow function não usa o contexto lexico ou o contexto da execução atual, ele usa o contexto do root(contexto pai que é o "aluno(nome, nota)") e esse é o poder do arrow function na superioridade de execução em relação a função anônima tradicional.
+            console.log(this.nome)
+            console.log(this.nota)
+        },2000)
+    }
+
+}
+
+const al1 = new aluno("Alex", 10)//sintaxe de classes de no contexto de programação orientada a objeto.
+al1.dados()
+al1.dados_arrow()
+
+
+
+
