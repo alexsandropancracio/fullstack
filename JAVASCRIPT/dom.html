@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Aula 21 JS</title>
-    </head>
-    <body>
-        <div id="c1">HTML</div>
-        <div id="c2">CSS</div>
-        <div id="c3">Javascript</div>
-        <div id="c4">PHP</div>
-        <div id="c5">React</div>
-        <div id="c6">MySQL</div>
-        <script src="dom.js"></script>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dom.css">
+    <title>Aula 24 JS</title>
+</head>
+<body>
+    <div id="caixa" class="caixa"><!--Parent Element-->
+        <div id="c1" class="curso c1">HTML</div><!--Chield/Children Element-->
+        <div id="c2" class="curso c1">CSS</div><!--Siblings Element-->
+        <div id="c3" class="curso c1">Javascript</div><!--Se por ventura essa div tivesse outra div dentro ou elementoHTML, ela não seria Sibling, ela seria um child da div superior.-->
+        <div id="c4" class="curso c1">PHP</div><!--Siblings Element-->
+        <div id="c5" class="curso c1">React</div><!--Siblings Element-->
+        <div id="c6" class="curso c1">MySQL</div><!--Last Element-->
+    </div>
+    <script src="dom.js"></script>
+</body>
 </html>
