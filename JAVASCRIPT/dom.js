@@ -51,4 +51,9 @@ for(const index of box){//Desse forma como acima, iteramos um um array.
     console.log(index)
 }
 
-
+//parentNode
+//childNodes[nodenumber]
+//firstChild
+//lastchild
+//nextSibling
+//previousSibling

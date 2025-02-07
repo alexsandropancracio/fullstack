@@ -1,0 +1,50 @@
+main{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+}
+
+.caixa, .box{
+    background-color:  rgb(209, 209, 209);
+    font-family: Arial, Helvetica, sans-serif;
+    width: 300px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.caixa > button{
+    margin-top: 20px;
+    background-color: rgb(0, 0, 94);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid white;
+    width: 150px;
+}
+
+.caixa > input{
+    height: 25px;
+}
+
+.info{
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+    background-color: rgb(0, 0, 94);
+    padding: 0px 10px 0px 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid white;
+}
+
+.info > input{
+    cursor: pointer;
+}
