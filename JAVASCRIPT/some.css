@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.box_array{
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+.box_central{
+    background-color: gray;
+    color: white;
+    padding: 10px;
+    
+}
+
+.box_resultado{
+    background-color: black;
+    color: white;
+    padding: 10px;
+    height: 70px;
+}
+
+.pesquisar{
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.array{
+    padding: 5px;
+}
+
+.resultado{
+    padding: 10px 0px 0px 0px;
+}
